@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# AUTHOR: Mikel Rouco
+#
+# DESCRIPTION:
+#     Opens the pdf version of the man-page selected from dmenu
+#
+# USAGE:
+#     openman
+
+man_to_open=$(man -k . | \
+		  dmenu -l 15 -p "choose the man page:" -fn "Hack-10" -nb "#15161B" -sb "#337FB4" | \
+		  awk '{ print $2 " " $1 }' | tr -d "()")
+
+if echo $man_to_open | xargs man > /dev/null; then
+    echo $man_to_open | xargs man -T | ps2pdf - /tmp/openman.pdf && xdg-open /tmp/openman.pdf
+else
+    if [ ${#man_to_open} -gt 0 ]; then
+	notify-send "Command not found" "The command '$man_to_open ' has no manpage"
+    fi
+fi

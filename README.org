@@ -1,0 +1,19 @@
+* Custom =bash= scripts for linux
+
+  This repo contains a bunch of (more or less) useful =bash= scripts. Below you
+  will find a list of the scripts, together with a brief decription and their
+  requirements.
+
+
+** =openman= -- enhanced search and visualization for =man=
+
+   This script let you interactively choose the manual to read and opens it as a
+   /pdf/ file in you default pdf viewer.
+
+   This is a list of dependencies, which most of them are installed by default
+   in many GNU/Linux ditros:
+
+   + =man= as the system's reference manuals interface.
+   + =groff= as the pdf formatter.
+   + =xdg-open= to open the pdf file with the default viewer.
+   + =dmenu= to interactively select the manual to open.
